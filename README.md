@@ -17,16 +17,19 @@ TODO
 
 ## Creating image for WSL with `podman`
 
+For the newest build code/script check `build.sh`. To manually
+create the image from command line run:
+
 ```bash
 my_arch=$(arch)
 podman rm el9
 podman run -it --name el9 docker.io/eurolinux/eurolinux-9:latest < install-script.sh
-podman export el9 > el9-${my_arch}.tar
-tar -czf - el9-${my_arch}.tar | gzip > el9.tar.gz
+podman export el9 > "el9-${my_arch}.tar"
+tar -czf - "el9-${my_arch}.tar" | gzip > "el9-${my_arch}.tar.gz"
 ```
 
 Where:
-- `el9-$ARCH.tar` is used for base import
+- `el9-$ARCH.tar` is used for base import and release page
 - `el9-$ARCH.tar.gz` is used for in DistroLauncher
 
 **You can modify the `install-script.sh` to create custom/tailored images.**
