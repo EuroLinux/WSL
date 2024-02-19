@@ -10,7 +10,6 @@ Import X86_64 WSL image:
 ```bash
 wget https://github.com/EuroLinux/WSL/releases/latest/download/el9-x86_64.tar -o el9-x86_64.tar
 wsl --import EuroLinux-9 "$env:USERPROFILE/EuroLinux-9" .\el9-x86_64.tar --version 2
-wsl -d EuroLinux-9
 ```
 
 Import ARM64 (aarch64) image :
