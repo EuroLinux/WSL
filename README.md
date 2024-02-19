@@ -19,27 +19,24 @@ wget https://github.com/EuroLinux/WSL/releases/latest/download/el9-aarch64.tar -
 wsl --import EuroLinux-9 "$env:USERPROFILE/EuroLinux-9" .\el9-aarch64.tar --version 2
 ```
 
-In both cases WSL disk is saved in the user home directory.
-After import you can run your instance with:
+In both cases, the WSL disk is saved in the user's home directory. After import, you can run your instance with:
 ```bash
 wsl -d EuroLinux-9
 ```
 
-To setup EuroLinux 9 as the default WSL distribution run:
+To set EuroLinux 9 as the default WSL distribution run:
 ```bash
 wsl --set-default EuroLinux-9
 ```
 
-Then simply type:
+Then simply run it with:
 ```bash
 wsl
 ```
-to run EuroLinux 9 WSL instance.
 
 ## Creating image for WSL with `podman`
 
-For the newest build code/script check `build.sh`. To manually
-create the image from command line run:
+For the newest build code/script check build.sh. To manually create the image from the command line run:
 
 ```bash
 my_arch=$(arch)
@@ -76,18 +73,18 @@ rm /etc/motd
 ```
 
 
-MOTD was enabled in the `/etc/profile`, it's the easy and clean solution
-
+MOTD was enabled in the `/etc/profile`, it's an easy and clean solution
 ```bash
 echo '[ -e /etc/motd ] && cat /etc/motd' >> /etc/profile
 ```
 
-The `sudo`, `util-linux-core` and 'systemd' were packages installed
+The `sudo`, `util-linux-core`, and `systemd` were packages installed
 
 ```bash
 yum install -y sudo util-linux-core systemd
 ```
-Ands that's all
+
+That's all :)!
 
 ## Ultra short WSL cheatsheet
 
@@ -98,7 +95,7 @@ wsl -l -v # alt wsl --list --verbose
 wsl --unregister DISTRONAME
 # change/set WSL version
 wsl --set-version DISTRONAME VER
-# run selected distro
+# run a selected distro
 wsl -d DISTRONAME
 # run default distro
 wsl
