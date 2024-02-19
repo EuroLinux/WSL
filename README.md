@@ -4,16 +4,38 @@ Welcome to EuroLinux images for Windows Subsystem for Linux
 
 ## Running Official EuroLinux images for WSL
 
-X86_64:
+**In the Windows PowerShell/Terminal:**
+
+Import X86_64 WSL image:
 ```bash
-wsl --import EuroLinux-9 "$env:USERPROFILE/EuroLinux-9" C:\Users\Alex\Downloads\el9.tar --version 2
+wget https://github.com/EuroLinux/WSL/releases/latest/download/el9-x86_64.tar -o el9-x86_64.tar
+wsl --import EuroLinux-9 "$env:USERPROFILE/EuroLinux-9" .\el9-x86_64.tar --version 2
+wsl -d EuroLinux-9
 ```
 
-ARM64 (aarch64):
+Import ARM64 (aarch64) image :
 
+```bash
+wget https://github.com/EuroLinux/WSL/releases/latest/download/el9-aarch64.tar -o el9-aarch64.tar
+wsl --import EuroLinux-9 "$env:USERPROFILE/EuroLinux-9" .\el9-aarch64.tar --version 2
 ```
-TODO
+
+In both cases WSL disk is saved in the user home directory.
+After import you can run your instance with:
+```bash
+wsl -d EuroLinux-9
 ```
+
+To setup EuroLinux 9 as the default WSL distribution run:
+```bash
+wsl --set-default EuroLinux-9
+```
+
+Then simply type:
+```bash
+wsl
+```
+to run EuroLinux 9 WSL instance.
 
 ## Creating image for WSL with `podman`
 
@@ -29,8 +51,8 @@ tar -czf - "el9-${my_arch}.tar" | gzip > "el9-${my_arch}.tar.gz"
 ```
 
 Where:
-- `el9-$ARCH.tar` is used for base import and release page
-- `el9-$ARCH.tar.gz` is used for in DistroLauncher
+- `el9-$ARCH.tar` is used for base import and releases
+- `el9-$ARCH.tar.gz` is used in DistroLauncher releases
 
 **You can modify the `install-script.sh` to create custom/tailored images.**
 
